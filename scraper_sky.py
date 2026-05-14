@@ -234,15 +234,4 @@ class SkyScraper:
 
 if __name__ == "__main__":
     scraper = SkyScraper()
-    print("🚀 Scraper Sky Ottimizzato Avviato")
-    while True:
-        try:
-            scraper.run()
-        except KeyboardInterrupt:
-            print("\nArresto dello scraper...")
-            break
-        except Exception as e:
-            logger.error(f"Errore durante l'esecuzione: {e}")
-        
-        print("In attesa del prossimo aggiornamento (10 min)...")
-        time.sleep(600)
+    scraper.run()
