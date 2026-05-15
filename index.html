@@ -350,6 +350,10 @@
             z-index: 2;
         }
 
+        .player-loader.hidden {
+            display: none;
+        }
+
         .spinner {
             width: 48px;
             height: 48px;
@@ -399,6 +403,7 @@
             border-radius: var(--radius-xl);
             padding: 1rem;
             animation: slideInUp 0.4s ease;
+            overflow-x: auto;
         }
 
         @keyframes slideInUp {
@@ -414,6 +419,7 @@
 
         .epg-item {
             flex: 1;
+            min-width: 200px;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -422,6 +428,7 @@
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .epg-item:hover {
@@ -531,11 +538,38 @@
             flex-shrink: 0;
         }
 
+        .channels-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tab-btn.active {
+            color: var(--accent-primary);
+            border-bottom: 2px solid var(--accent-primary);
+            padding-bottom: calc(0.5rem - 2px);
+        }
+
         .channels-title {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            margin-bottom: 0.75rem;
         }
 
         .channels-title i {
@@ -672,7 +706,7 @@
             gap: 0.2rem;
         }
 
-        .channel-name {
+        .channel-item-name {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
@@ -717,6 +751,14 @@
         @keyframes wave {
             0%, 100% { height: 30%; opacity: 0.6; }
             50% { height: 100%; opacity: 1; }
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: flex;
         }
 
         /* ===== RESPONSIVE ===== */
@@ -850,33 +892,6 @@
             animation: fadeIn 0.3s ease;
         }
 
-        /* ===== SKELETON LOADING ===== */
-        .skeleton {
-            background: linear-gradient(90deg,
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0.1) 20%,
-                rgba(255, 255, 255, 0.05) 40%,
-                rgba(255, 255, 255, 0.05) 100%);
-            background-size: 200% 100%;
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        .skeleton-channel {
-            height: 48px;
-            border-radius: var(--radius-md);
-        }
-
-        .skeleton-text {
-            height: 12px;
-            border-radius: 4px;
-            margin-bottom: 0.5rem;
-        }
-
         /* ===== UTILITIES ===== */
         .hidden {
             display: none !important;
@@ -901,31 +916,31 @@
 
             <nav class="nav-menu">
                 <li class="nav-item">
-                    <button class="nav-btn active" title="Live TV">
+                    <button class="nav-btn active" data-view="channels" title="Live TV">
                         <i class="ph ph-television"></i>
                         <span class="nav-label">Live</span>
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-btn" title="Categorie">
+                    <button class="nav-btn" data-view="categories" title="Categorie">
                         <i class="ph ph-list"></i>
                         <span class="nav-label">Categorie</span>
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-btn" title="Preferiti">
+                    <button class="nav-btn" data-view="favorites" title="Preferiti">
                         <i class="ph ph-heart"></i>
                         <span class="nav-label">Preferiti</span>
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-btn" title="Cronologia">
+                    <button class="nav-btn" data-view="history" title="Cronologia">
                         <i class="ph ph-clock-counter-clockwise"></i>
                         <span class="nav-label">Cronologia</span>
                     </button>
                 </li>
                 <li class="nav-item" style="margin-top: auto;">
-                    <button class="nav-btn" title="Impostazioni">
+                    <button class="nav-btn" data-view="settings" title="Impostazioni">
                         <i class="ph ph-gear"></i>
                         <span class="nav-label">Impostazioni</span>
                     </button>
@@ -938,7 +953,7 @@
             <div class="channel-header">
                 <div class="channel-header-title">
                     <i class="ph ph-play-circle"></i>
-                    <h1 class="channel-name">Premium HD</h1>
+                    <h1 class="channel-name" id="currentChannelName">Premium HD</h1>
                 </div>
             </div>
             <div class="top-bar-controls">
@@ -948,7 +963,7 @@
                 <button class="control-btn" title="Sottotitoli">
                     <i class="ph ph-closed-captioning"></i>
                 </button>
-                <button class="control-btn" title="Schermo intero">
+                <button class="control-btn" title="Schermo intero" id="fullscreenBtn">
                     <i class="ph ph-arrows-out"></i>
                 </button>
             </div>
@@ -960,117 +975,43 @@
             <section class="player-section">
                 <div class="player-wrapper">
                     <div class="player-glow"></div>
-                    <div class="player-loader">
+                    <div class="player-loader" id="playerLoader">
                         <div class="spinner"></div>
                         <span class="loader-text">CARICAMENTO...</span>
                     </div>
-                    <iframe src="https://example.com/player" title="Video Player"></iframe>
+                    <iframe id="videoFrame" title="Video Player"></iframe>
                 </div>
             </section>
 
             <!-- EPG / SCHEDULE -->
-            <section class="epg-section">
-                <div class="epg-item live">
-                    <div class="epg-icon">
-                        <i class="ph ph-play-circle-fill"></i>
-                    </div>
-                    <div class="epg-content">
-                        <div class="epg-time">IN ORA</div>
-                        <div class="epg-title">Film Thriller Avvincente</div>
-                    </div>
-                </div>
-
-                <div class="epg-item">
-                    <div class="epg-icon">
-                        <i class="ph ph-play-circle"></i>
-                    </div>
-                    <div class="epg-content">
-                        <div class="epg-time">22:30</div>
-                        <div class="epg-title">Documentario Natura</div>
-                    </div>
-                </div>
+            <section class="epg-section" id="epgSection">
+                <!-- Populated by JS -->
             </section>
 
             <!-- CHANNELS SIDEBAR -->
             <aside class="channels-sidebar">
                 <div class="channels-header">
-                    <div class="channels-title">
-                        <i class="ph ph-list-dashes"></i>
-                        <h3>Canali</h3>
+                    <div class="channels-tabs">
+                        <button class="tab-btn active" data-tab="channels">Canali</button>
+                        <button class="tab-btn" data-tab="categories">Cat.</button>
                     </div>
                     <div class="channels-search">
                         <i class="ph ph-magnifying-glass search-icon"></i>
-                        <input type="text" class="search-input" placeholder="Cerca...">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Cerca...">
                     </div>
                 </div>
 
-                <div class="channels-list">
-                    <!-- Template Channel Item -->
-                    <div class="channel-item active">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Premium HD</div>
-                            <div class="channel-status">
-                                <span>LIVE</span>
-                                <div class="status-dots">
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                    <div class="dot"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- CHANNELS VIEW -->
+                <div class="view-section active" id="channelsView">
+                    <div class="channels-list" id="channelsList">
+                        <!-- Populated by JS -->
                     </div>
+                </div>
 
-                    <div class="channel-item">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Film Zone</div>
-                            <div class="channel-status">OFFLINE</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-item">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Sport Plus</div>
-                            <div class="channel-status">LIVE</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-item">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">News 24h</div>
-                            <div class="channel-status">LIVE</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-item">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Kids World</div>
-                            <div class="channel-status">OFFLINE</div>
-                        </div>
-                    </div>
-
-                    <div class="channel-item">
-                        <div class="channel-icon">
-                            <i class="ph ph-play-circle"></i>
-                        </div>
-                        <div class="channel-info">
-                            <div class="channel-name">Documentari HD</div>
-                            <div class="channel-status">LIVE</div>
-                        </div>
+                <!-- CATEGORIES VIEW -->
+                <div class="view-section" id="categoriesView">
+                    <div class="channels-list" id="categoriesList">
+                        <!-- Populated by JS -->
                     </div>
                 </div>
             </aside>
@@ -1078,58 +1019,216 @@
     </div>
 
     <script>
-        // Performance: Lazy load and optimize animations
-        document.addEventListener('DOMContentLoaded', () => {
-            // Example: Simulated channel switching
-            const channelItems = document.querySelectorAll('.channel-item');
-            const channelName = document.querySelector('.channel-name');
+        // ===== DATA =====
+        const channels = [
+            { id: 1, name: 'Premium HD', category: 'Premium', url: 'https://example.com/premium', status: 'live', logo: '📺' },
+            { id: 2, name: 'Film Zone', category: 'Film', url: 'https://example.com/filmzone', status: 'live', logo: '🎬' },
+            { id: 3, name: 'Sport Plus', category: 'Sport', url: 'https://example.com/sport', status: 'live', logo: '⚽' },
+            { id: 4, name: 'News 24h', category: 'News', url: 'https://example.com/news', status: 'live', logo: '📰' },
+            { id: 5, name: 'Kids World', category: 'Kids', url: 'https://example.com/kids', status: 'offline', logo: '👶' },
+            { id: 6, name: 'Documentari HD', category: 'Doc', url: 'https://example.com/doc', status: 'live', logo: '🎥' },
+            { id: 7, name: 'Musica Italiana', category: 'Musica', url: 'https://example.com/musica', status: 'live', logo: '🎵' },
+            { id: 8, name: 'Tech Plus', category: 'Tech', url: 'https://example.com/tech', status: 'offline', logo: '💻' },
+            { id: 9, name: 'Arte & Cultura', category: 'Arte', url: 'https://example.com/arte', status: 'live', logo: '🎨' },
+            { id: 10, name: 'Natura Selvaggia', category: 'Doc', url: 'https://example.com/natura', status: 'live', logo: '🦁' },
+        ];
 
-            channelItems.forEach(item => {
+        const epgData = [
+            { time: 'IN ORA', title: 'Film Thriller Avvincente', channel: 'Premium HD', live: true },
+            { time: '22:30', title: 'Documentario Natura', channel: 'Documentari HD', live: false },
+            { time: '23:45', title: 'Sport Match Prime', channel: 'Sport Plus', live: false },
+        ];
+
+        // ===== STATE =====
+        let currentChannel = channels[0];
+        let favorites = [];
+        let history = [];
+        let currentView = 'channels';
+
+        // ===== UI ELEMENTS =====
+        const channelsList = document.getElementById('channelsList');
+        const categoriesList = document.getElementById('categoriesList');
+        const searchInput = document.getElementById('searchInput');
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const videoFrame = document.getElementById('videoFrame');
+        const playerLoader = document.getElementById('playerLoader');
+        const epgSection = document.getElementById('epgSection');
+        const channelNameDisplay = document.getElementById('currentChannelName');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+        // ===== RENDER FUNCTIONS =====
+        function renderChannels(filter = '') {
+            const filtered = channels.filter(ch => 
+                ch.name.toLowerCase().includes(filter.toLowerCase())
+            );
+
+            channelsList.innerHTML = filtered.map(ch => `
+                <div class="channel-item ${ch.id === currentChannel.id ? 'active' : ''}" data-channel-id="${ch.id}">
+                    <div class="channel-icon">${ch.logo}</div>
+                    <div class="channel-info">
+                        <div class="channel-item-name">${ch.name}</div>
+                        <div class="channel-status">
+                            <span>${ch.status === 'live' ? 'LIVE' : 'OFFLINE'}</span>
+                            ${ch.status === 'live' ? `
+                                <div class="status-dots">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            document.querySelectorAll('.channel-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    channelItems.forEach(ch => ch.classList.remove('active'));
-                    item.classList.add('active');
-
-                    const name = item.querySelector('.channel-name').textContent;
-                    channelName.textContent = name;
-
-                    // Simulated player reload
-                    const iframe = document.querySelector('iframe');
-                    const loader = document.querySelector('.player-loader');
-                    
-                    iframe.classList.remove('active');
-                    loader.style.display = 'flex';
-
-                    setTimeout(() => {
-                        loader.style.display = 'none';
-                        iframe.classList.add('active');
-                    }, 1500);
+                    const channelId = parseInt(item.dataset.channelId);
+                    selectChannel(channelId);
                 });
             });
+        }
 
-            // Sidebar navigation
-            const navBtns = document.querySelectorAll('.nav-btn');
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+        function renderCategories() {
+            const categories = [...new Set(channels.map(ch => ch.category))];
+            
+            categoriesList.innerHTML = categories.map(cat => `
+                <div class="channel-item" data-category="${cat}">
+                    <div class="channel-icon">📂</div>
+                    <div class="channel-info">
+                        <div class="channel-item-name">${cat}</div>
+                        <div class="channel-status">${channels.filter(ch => ch.category === cat).length} canali</div>
+                    </div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('#categoriesList .channel-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const category = item.dataset.category;
+                    const filtered = channels.filter(ch => ch.category === category);
+                    channelsList.innerHTML = filtered.map(ch => `
+                        <div class="channel-item ${ch.id === currentChannel.id ? 'active' : ''}" data-channel-id="${ch.id}">
+                            <div class="channel-icon">${ch.logo}</div>
+                            <div class="channel-info">
+                                <div class="channel-item-name">${ch.name}</div>
+                                <div class="channel-status">
+                                    <span>${ch.status === 'live' ? 'LIVE' : 'OFFLINE'}</span>
+                                    ${ch.status === 'live' ? `
+                                        <div class="status-dots">
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+
+                    document.querySelectorAll('.channel-item').forEach(el => {
+                        el.addEventListener('click', () => {
+                            const channelId = parseInt(el.dataset.channelId);
+                            selectChannel(channelId);
+                        });
+                    });
                 });
             });
+        }
 
-            // Search filter
-            const searchInput = document.querySelector('.search-input');
-            searchInput?.addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
-                document.querySelectorAll('.channel-item').forEach(item => {
-                    const name = item.querySelector('.channel-name').textContent.toLowerCase();
-                    item.style.display = name.includes(query) ? '' : 'none';
-                });
+        function renderEPG() {
+            epgSection.innerHTML = epgData.map(item => `
+                <div class="epg-item ${item.live ? 'live' : ''}">
+                    <div class="epg-icon">
+                        <i class="ph ${item.live ? 'ph-play-circle-fill' : 'ph-play-circle'}"></i>
+                    </div>
+                    <div class="epg-content">
+                        <div class="epg-time">${item.time}</div>
+                        <div class="epg-title">${item.title}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function selectChannel(channelId) {
+            const channel = channels.find(ch => ch.id === channelId);
+            if (!channel) return;
+
+            currentChannel = channel;
+            channelNameDisplay.textContent = channel.name;
+
+            // Update UI
+            renderChannels();
+            renderCategories();
+
+            // Show loader
+            playerLoader.classList.remove('hidden');
+            videoFrame.classList.remove('active');
+
+            // Simulate loading
+            setTimeout(() => {
+                videoFrame.src = channel.url;
+                videoFrame.classList.add('active');
+                playerLoader.classList.add('hidden');
+            }, 1000);
+
+            // Add to history
+            if (!history.find(h => h.id === channel.id)) {
+                history.unshift(channel);
+                if (history.length > 10) history.pop();
+            }
+        }
+
+        // ===== EVENT LISTENERS =====
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                navBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentView = btn.dataset.view;
+                // Could implement different views here
             });
         });
 
-        // Reduce motion if preferred
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            document.documentElement.style.setProperty('--animation-duration', '0.01ms');
-        }
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const views = document.querySelectorAll('.view-section');
+                views.forEach(v => v.classList.remove('active'));
+
+                const tabName = btn.dataset.tab;
+                if (tabName === 'channels') {
+                    document.getElementById('channelsView').classList.add('active');
+                } else {
+                    document.getElementById('categoriesView').classList.add('active');
+                }
+
+                renderCategories();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            renderChannels(e.target.value);
+        });
+
+        fullscreenBtn.addEventListener('click', () => {
+            const player = document.querySelector('.player-wrapper');
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                player.requestFullscreen().catch(err => console.log(err));
+            }
+        });
+
+        // ===== INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', () => {
+            renderChannels();
+            renderCategories();
+            renderEPG();
+            selectChannel(1);
+        });
     </script>
 </body>
 
