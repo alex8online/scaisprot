@@ -552,40 +552,7 @@
             }
         }
 
-        .player-loader {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            background: radial-gradient(circle at 50% 50%, var(--bg-surface-solid), #000);
-            z-index: 1;
-        }
-
-        .loader-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(0, 102, 204, 0.2);
-            border-top-color: var(--accent-secondary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .loader-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
+        /* REMOVED: player-loader section to enable instant channel opening */
         iframe {
             border: none;
             z-index: 2;
@@ -596,8 +563,8 @@
             width: calc(100% + 320px);
             height: 100%;
             margin-left: -320px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
+            opacity: 1;
+            transition: opacity 0.3s ease;
         }
 
         @media (max-width: 1200px) {
@@ -1000,573 +967,184 @@
             animation: shimmer 1.5s infinite linear;
         }
 
-        .skeleton-icon {
-            border-radius: 12px;
-            width: 44px;
-            height: 44px;
-        }
-
-        .skeleton-text {
-            border-radius: 6px;
-        }
-
-        .skeleton-title {
-            height: 14px;
-            width: 70%;
-            margin-bottom: 8px;
-        }
-
-        .skeleton-subtitle {
-            height: 10px;
-            width: 40%;
-        }
-
         @keyframes shimmer {
             0% {
-                background-position: -200% 0;
+                background-position: -1000% 0;
             }
 
             100% {
-                background-position: 200% 0;
+                background-position: 1000% 0;
             }
-        }
-
-        .close-sidebar-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .close-sidebar-btn:hover {
-            background: rgba(230, 0, 0, 0.2);
-            border-color: var(--accent-primary);
-            color: var(--text-primary);
-            transform: translateX(3px);
-        }
-
-        .floating-open-btn {
-            position: fixed;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%) translateX(100%);
-            background: rgba(1, 11, 26, 0.9);
-            backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--border-subtle);
-            border-right: none;
-            color: var(--text-primary);
-            width: 40px;
-            height: 60px;
-            border-radius: 16px 0 0 16px;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            will-change: transform, opacity, width, background-color;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        body.right-sidebar-hidden .floating-open-btn {
-            transform: translateY(-50%) translateX(0);
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .floating-open-btn:hover {
-            background: rgba(0, 102, 204, 0.4);
-            border-color: var(--accent-secondary);
-            width: 48px;
         }
     </style>
 </head>
 
 <body>
-
     <div class="ambient-bg">
         <div class="ambient-blob blob-1"></div>
         <div class="ambient-blob blob-2"></div>
     </div>
 
     <div class="app-layout">
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand-icon">PZ8</div>
-                <div class="brand-text"></div>
+                <div class="brand-icon">P</div>
+                <span class="brand-text">PZ8</span>
             </div>
 
-            <div class="nav-label">Esplora Canali</div>
-            <ul class="category-list" id="category-list">
-                <!-- Categories injected via JS -->
+            <div class="nav-label">
+                CATEGORIE
+            </div>
+
+            <ul class="category-list">
+                <li>
+                    <button class="category-btn active">
+                        <i class="ph-bold ph-house"></i>
+                        <span>Home</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="category-btn">
+                        <i class="ph-bold ph-rocket"></i>
+                        <span>Trending</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="category-btn">
+                        <i class="ph-bold ph-star"></i>
+                        <span>Favoriti</span>
+                    </button>
+                </li>
+                <li>
+                    <button class="category-btn">
+                        <i class="ph-bold ph-gear"></i>
+                        <span>Impostazioni</span>
+                    </button>
+                </li>
             </ul>
         </aside>
 
         <!-- Main Content -->
-        <main class="main-container">
-
+        <div class="main-container">
             <!-- Player Column -->
             <div class="player-column">
                 <div class="player-header">
-                    <div class="status-badge">
-                        <div class="status-dot"></div> LIVE
-                    </div>
-                    <h1 class="current-channel-title" id="current-ch-name">Seleziona un canale</h1>
+                    <span class="status-badge">
+                        <span class="status-dot"></span>
+                        IN DIRETTA
+                    </span>
+                    <h1 class="current-channel-title">Seleziona un Canale</h1>
                 </div>
 
                 <div class="player-container">
                     <div class="ambilight-glow"></div>
-                    <div class="player-wrapper" id="player-wrapper">
-                        <div class="player-loader" id="player-loader">
-                            <div class="loader-spinner"></div>
-                            <div class="loader-text">SINCRONIZZAZIONE FLUSSO...</div>
-                        </div>
-                        <iframe id="main-video-frame" src="about:blank" allowfullscreen
-                            allow="autoplay; encrypted-media"></iframe>
+                    <div class="player-wrapper">
+                        <iframe id="player-iframe" src="" allow="autoplay; fullscreen; picture-in-picture"
+                            allowfullscreen></iframe>
                     </div>
                 </div>
 
-                <div class="epg-bottom-bar" id="epg-bottom-bar" style="display: none;">
+                <div class="epg-bottom-bar">
                     <div class="epg-now">
-                        <div class="epg-badge live-badge">IN ONDA ORA</div>
-                        <div class="epg-time" id="epg-now-time">--:--</div>
-                        <div class="epg-title" id="epg-now-title">Caricamento...</div>
+                        <span class="epg-badge live-badge">LIVE</span>
+                        <span class="epg-time">20:30</span>
+                        <span class="epg-title">Film in Onda</span>
                     </div>
                     <div class="epg-divider"></div>
                     <div class="epg-next">
-                        <div class="epg-badge next-badge">A SEGUIRE</div>
-                        <div class="epg-time" id="epg-next-time">--:--</div>
-                        <div class="epg-title" id="epg-next-title">...</div>
+                        <span class="epg-badge next-badge">PROSSIMO</span>
+                        <span class="epg-time">22:00</span>
+                        <span class="epg-title">Programma Successivo</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Channels / Up Next Column -->
+            <!-- Channels Sidebar -->
             <div class="channels-sidebar">
                 <div class="channels-header-area">
-                    <div class="channels-title-row" style="justify-content: space-between;">
-                        <div style="display: flex; align-items: center; gap: 0.8rem;">
-                            <i class="ph ph-squares-four" id="cat-icon-title"></i>
-                            <h2 id="cat-text-title">Tutti i canali</h2>
-                        </div>
-                        <button class="close-sidebar-btn" onclick="document.body.classList.add('right-sidebar-hidden')"
-                            title="Nascondi Canali">
-                            <i class="ph ph-caret-right"></i>
-                        </button>
+                    <div class="channels-title-row">
+                        <i class="ph-bold ph-tv"></i>
+                        <h2>Canali</h2>
                     </div>
                     <div class="search-container">
-                        <i class="ph ph-magnifying-glass search-icon"></i>
-                        <input type="text" class="search-input" placeholder="Cerca canale..." id="search-input">
+                        <i class="ph-bold ph-magnifying-glass search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Cerca canali...">
                     </div>
                 </div>
 
-                <div class="channels-list-container" id="channels-grid">
-                    <!-- Channels injected via JS -->
+                <div class="channels-list-container">
+                    <!-- Example Channels -->
+                    <div class="channel-row playing">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-play"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">RAI 1</div>
+                            <div class="row-status">
+                                <span class="play-indicator-bars">
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                    <span class="bar"></span>
+                                </span>
+                                In diretta
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="channel-row">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-tv"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">RAI 2</div>
+                            <div class="row-status">Disponibile</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-row">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-tv"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">RAI 3</div>
+                            <div class="row-status">Disponibile</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-row">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-tv"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">Canale 5</div>
+                            <div class="row-status">Disponibile</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-row">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-tv"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">Italia 1</div>
+                            <div class="row-status">Disponibile</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-row">
+                        <div class="row-icon">
+                            <i class="ph-bold ph-tv"></i>
+                        </div>
+                        <div class="row-info">
+                            <div class="row-name">Rete 4</div>
+                            <div class="row-status">Disponibile</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </main>
+        </div>
     </div>
-
-    <button class="floating-open-btn" onclick="document.body.classList.remove('right-sidebar-hidden')"
-        title="Mostra Canali">
-        <i class="ph ph-caret-left"></i>
-    </button>
-
-    <script>
-        const db = {
-            sport: [
-                { n: "Sky Sport 24", u: "SPORT24" },
-                { n: "Sky Sport Uno", u: "SPORTUNO" },
-                { n: "Sky Sport Calcio", u: "sportcalcio" },
-                { n: "Sky Sport Tennis", u: "sporttennis" },
-                { n: "Sky Sport F1", u: "sportf1" },
-                { n: "Sky Sports F1 4K", u: "sportsf1" },
-                { n: "Sky Sport MotoGP", u: "sportmotogp" },
-                { n: "Sky Sport Basket", u: "sportbasket" },
-                { n: "Sky Sport Arena", u: "arena" },
-                { n: "Sky Sport Max", u: "max" },
-                { n: "Sky Sport Mix", u: "mix" },
-                { n: "Sky Sport Golf", u: "golf" },
-                { n: "Sky Sport Legend", u: "legend" },
-                { n: "Sky Sport 251", u: "sport251" },
-                { n: "Sky Sport 252", u: "sport252" },
-                { n: "Sky Sport 253", u: "sport253" },
-                { n: "Sky Sport 254", u: "sport254" },
-                { n: "Sky Sport 255", u: "sport255" },
-                { n: "Sky Sport 256", u: "sport256" },
-                { n: "Sky Sport 257", u: "sport257" },
-                { n: "Sky Sport 258", u: "sport258" },
-                { n: "Sky Sport 259", u: "sport259" }
-            ],
-            dazn: [
-                { n: "Dazn 1 IT", u: "Dazn1_WARP" },
-                { n: "Dazn 2 IT", u: "dazn5it" },
-                { n: "Dazn 1 PT", u: "dazn1pt" },
-                { n: "Dazn 2 PT", u: "dazn2pt" },
-                { n: "Dazn 3 PT", u: "dazn3pt" },
-                { n: "Dazn 4 PT", u: "dazn4pt" },
-                { n: "Dazn 5 PT", u: "dazn5pt" },
-                { n: "Eleven Sports 1 PL", u: "elevensport1" },
-                { n: "Eleven Sports 2 PL", u: "elevensport2" },
-                { n: "Eleven Sports 3 PL", u: "elevensport3" },
-                { n: "Eleven Sports 4 PL", u: "elevensport4" },
-                { n: "Sport Tv 1", u: "sporttv1" },
-                { n: "Sport Tv 2", u: "sporttv2" },
-                { n: "Sport Tv 3", u: "sporttv3" },
-                { n: "Sport Tv 4", u: "sporttv4" },
-                { n: "Sport Tv 5", u: "sporttv5" },
-                { n: "Sport Tv 6", u: "sporttv6" },
-                { n: "Sport Tv 7", u: "sporttv7" },
-                { n: "Tnt Sports 1", u: "tnt" }
-            ],
-            eurosport: [
-                { n: "Eurosport 1", u: "eurosport1" },
-                { n: "Eurosport 2", u: "eurosport2" },
-                { n: "Eurosport 3", u: "eurosport3" },
-                { n: "Eurosport 4", u: "eurosport4" },
-                { n: "Eurosport 5", u: "eurosport5" },
-                { n: "Eurosport 6", u: "eurosport6" }
-            ],
-            lba: [
-                { n: "LBA TV 1", u: "lbatv1" },
-                { n: "LBA TV 2", u: "lbatv2" },
-                { n: "LBA TV 3", u: "lbatv3" },
-                { n: "LBA TV 4", u: "lbatv4" },
-                { n: "LBA TV 5", u: "lbatv5" }
-            ],
-            entertainment: [
-                { n: "Sky TG 24", u: "tg24" },
-                { n: "Sky Uno", u: "skyuno" },
-                { n: "Sky Atlantic", u: "atlantic" },
-                { n: "Sky Serie", u: "serie" },
-                { n: "Sky Adventure", u: "adventure" },
-                { n: "Sky Arte", u: "arte" },
-                { n: "Sky Investigation", u: "investigation" },
-                { n: "Sky Crime", u: "crime" },
-                { n: "Sky Documentaries", u: "documentaries" },
-                { n: "Sky Nature", u: "nature" },
-                { n: "Sky Arte", u: "arte" },
-                { n: "MTV", u: "mtv" },
-                { n: "Comedy Central", u: "comedy" }
-            ],
-            cinema: [
-                { n: "Sky Cinema Uno", u: "uno" },
-                { n: "Sky Cinema Suspense", u: "suspense" },
-                { n: "Sky Cinema Drama", u: "drama" },
-                { n: "Sky Cinema Action", u: "action" },
-                { n: "Sky Cinema Comedy", u: "cinemacomedy" },
-                { n: "Sky Cinema Romance", u: "cinemaromance" },
-                { n: "Sky Cinema Family", u: "illumination" },
-                { n: "Sky Cinema Collection", u: "collection" }
-            ]
-        };
-
-        const categoryIcons = {
-            all: 'ph-squares-four',
-            sport: 'ph-soccer-ball',
-            dazn: 'ph-play-circle',
-            eurosport: 'ph-bicycle',
-            lba: 'ph-basketball',
-            entertainment: 'ph-popcorn',
-            cinema: 'ph-film-strip'
-        };
-
-        const categoryNames = {
-            all: 'Tutti i canali',
-            sport: 'Sky Sport',
-            dazn: 'Dazn',
-            eurosport: 'Eurosport',
-            lba: 'LBA TV',
-            entertainment: 'Sky Intrattenimento',
-            cinema: 'Sky Cinema'
-        };
-
-        let currentUrl = null;
-        let currentCategory = 'all';
-        let epgData = [];
-
-        function timeToMinutes(timeStr) {
-            if (!timeStr || !timeStr.includes(':')) return 0;
-            const [hours, minutes] = timeStr.split(':').map(Number);
-            return (hours * 60) + minutes;
-        }
-
-        async function fetchEpgData() {
-            try {
-                const response = await fetch('guida_tv_sky.json');
-                if (response.ok) {
-                    epgData = await response.json();
-                }
-            } catch (err) {
-                console.warn("Errore caricamento EPG:", err);
-            }
-        }
-
-        function getChannelEpg(channelName) {
-            if (!epgData || epgData.length === 0) return { now: null, next: null };
-
-            const normalizedName = channelName.toUpperCase();
-            const channelEpg = epgData.find(item => item.canale.toUpperCase() === normalizedName);
-            if (!channelEpg || !channelEpg.programmi || channelEpg.programmi.length === 0) return { now: null, next: null };
-
-            const now = new Date();
-            const currentMinutes = (now.getHours() * 60) + now.getMinutes();
-
-            let activeIndex = -1;
-            for (let i = 0; i < channelEpg.programmi.length; i++) {
-                if (timeToMinutes(channelEpg.programmi[i].ora) <= currentMinutes) {
-                    activeIndex = i;
-                } else {
-                    break;
-                }
-            }
-
-            if (activeIndex === -1 && channelEpg.programmi.length > 0) activeIndex = 0;
-
-            return {
-                now: channelEpg.programmi[activeIndex],
-                next: activeIndex + 1 < channelEpg.programmi.length ? channelEpg.programmi[activeIndex + 1] : null
-            };
-        }
-
-        function updatePlayerEpg() {
-            if (!currentUrl) return;
-
-            const currentCh = db.all.find(c => c.u === currentUrl);
-            if (!currentCh) return;
-
-            const epg = getChannelEpg(currentCh.n);
-            const bar = document.getElementById('epg-bottom-bar');
-
-            if (!epg.now) {
-                bar.style.display = 'none';
-                return;
-            }
-
-            bar.style.display = 'flex';
-
-            document.getElementById('epg-now-time').innerText = epg.now.ora;
-            document.getElementById('epg-now-title').innerText = epg.now.titolo;
-
-            if (epg.next) {
-                document.getElementById('epg-next-time').innerText = epg.next.ora;
-                document.getElementById('epg-next-title').innerText = epg.next.titolo;
-            } else {
-                document.getElementById('epg-next-time').innerText = '--:--';
-                document.getElementById('epg-next-title').innerText = 'Dati non disponibili';
-            }
-        }
-
-        async function init() {
-            db.all = [];
-            for (const cat in db) {
-                if (cat !== 'all') {
-                    db.all = db.all.concat(db[cat]);
-                }
-            }
-
-            await fetchEpgData();
-            setInterval(async () => {
-                await fetchEpgData();
-                updatePlayerEpg();
-            }, 60000);
-            setInterval(() => {
-                renderChannels();
-                updatePlayerEpg();
-            }, 30000);
-
-            renderCategories();
-            selectCategory('all');
-
-            if (db.all && db.all.length > 0) {
-                playChannel(db.all[0].u, db.all[0].n);
-            }
-
-            document.getElementById('search-input').addEventListener('input', (e) => {
-                const query = e.target.value.toLowerCase();
-                const rows = document.querySelectorAll('.channel-row');
-                rows.forEach(row => {
-                    const name = row.querySelector('.row-name').innerText.toLowerCase();
-                    if (name.includes(query)) {
-                        row.style.display = 'flex';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        function renderCategories() {
-            const list = document.getElementById('category-list');
-            list.innerHTML = '';
-
-            for (const cat in categoryNames) {
-                if (!db[cat]) continue;
-                const li = document.createElement('li');
-                const btn = document.createElement('button');
-                btn.className = `category-btn ${cat === currentCategory ? 'active' : ''}`;
-
-                btn.innerHTML = `
-                    <i class="ph ${categoryIcons[cat]}"></i>
-                    <span>${categoryNames[cat]}</span>
-                `;
-
-                btn.onclick = () => selectCategory(cat);
-                li.appendChild(btn);
-                list.appendChild(li);
-            }
-        }
-
-        function selectCategory(cat) {
-            currentCategory = cat;
-
-            const iconEl = document.getElementById('cat-icon-title');
-            iconEl.className = `ph ${categoryIcons[cat]}`;
-            document.getElementById('cat-text-title').innerText = categoryNames[cat];
-
-            renderCategories();
-
-            // Show skeleton loading
-            renderSkeletons();
-
-            // Clear search 
-            document.getElementById('search-input').value = '';
-
-            // Scroll channel list to top
-            document.getElementById('channels-grid').scrollTop = 0;
-
-            // Simulate network delay for premium feel
-            setTimeout(() => {
-                if (currentCategory === cat) {
-                    renderChannels();
-                }
-            }, 500);
-        }
-
-        function renderSkeletons() {
-            const grid = document.getElementById('channels-grid');
-            grid.innerHTML = '';
-
-            for (let i = 0; i < 8; i++) {
-                const row = document.createElement('div');
-                row.className = 'channel-row skeleton-row';
-
-                row.innerHTML = `
-                    <div class="row-icon skeleton-icon"></div>
-                    <div class="row-info" style="display: flex; flex-direction: column; justify-content: center;">
-                        <div class="skeleton-text skeleton-title"></div>
-                        <div class="skeleton-text skeleton-subtitle"></div>
-                    </div>
-                `;
-                grid.appendChild(row);
-            }
-        }
-
-        function playChannel(url, name, event) {
-            if (currentUrl === url) return;
-            currentUrl = url;
-
-            const iframe = document.getElementById('main-video-frame');
-
-            iframe.style.opacity = '0';
-
-            setTimeout(() => {
-                iframe.src = `https://www.chilistream.net/live.php?ch=${url}`;
-                iframe.onload = () => {
-                    iframe.style.opacity = '1';
-                };
-            }, 300);
-
-            document.getElementById('current-ch-name').innerText = name;
-
-            renderChannels();
-            updatePlayerEpg();
-
-            if (window.innerWidth <= 1100) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-
-        function renderChannels() {
-            const grid = document.getElementById('channels-grid');
-            grid.innerHTML = '';
-
-            const channels = db[currentCategory];
-            if (!channels) return;
-
-            channels.forEach((ch, index) => {
-                const row = document.createElement('div');
-                const isPlaying = ch.u === currentUrl;
-                row.className = `channel-row ${isPlaying ? 'playing' : ''} fade-in-item`;
-
-                // Max out animation delay to avoid long waiting for huge lists
-                const delay = Math.min(index * 0.03, 0.5);
-                row.style.animationDelay = `${delay}s`;
-
-                row.onclick = (e) => playChannel(ch.u, ch.n, e);
-
-                const displayIcon = isPlaying ? 'ph-waveform' :
-                    (categoryIcons[currentCategory] === 'ph-squares-four' ? 'ph-monitor-play' : categoryIcons[currentCategory]);
-
-                const channelEpg = getChannelEpg(ch.n);
-                const currentProgram = channelEpg.now;
-                let statusHtml = '';
-
-                if (isPlaying) {
-                    statusHtml = `
-                        <div class="play-indicator-bars">
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                            <div class="bar"></div>
-                        </div>
-                        <span style="margin-left:2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stai Guardando ${currentProgram ? '- ' + currentProgram.titolo : ''}</span>
-                    `;
-                } else if (currentProgram) {
-                    statusHtml = `
-                        <span style="color: var(--accent-secondary); font-weight: 700;">${currentProgram.ora}</span>
-                        <span style="margin-left: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${currentProgram.titolo}</span>
-                    `;
-                } else {
-                    statusHtml = 'Live';
-                }
-
-                row.innerHTML = `
-                    <div class="row-icon">
-                        <i class="ph ${displayIcon}"></i>
-                    </div>
-                    <div class="row-info" style="min-width: 0;">
-                        <div class="row-name">${ch.n}</div>
-                        <div class="row-status" style="display: flex; align-items: center; white-space: nowrap; overflow: hidden;">
-                            ${statusHtml}
-                        </div>
-                    </div>
-                `;
-
-                grid.appendChild(row);
-
-                // Auto scroll to playing element if it's rendered
-                if (isPlaying) {
-                    setTimeout(() => {
-                        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 100);
-                }
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', init);
-    </script>
 </body>
 
 </html>
