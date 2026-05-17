@@ -4,12 +4,8 @@
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "17:00",
-                "titolo": "Sky Sunday Football Prepartita Live"
-            },
-            {
                 "ora": "17:55",
-                "titolo": "Studi"
+                "titolo": "Studi Live"
             },
             {
                 "ora": "19:30",
@@ -50,9 +46,13 @@
             {
                 "ora": "02:30",
                 "titolo": "News Line"
+            },
+            {
+                "ora": "03:00",
+                "titolo": "News Line"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Uno",
@@ -107,19 +107,15 @@
                 "titolo": "GP Catalogna: Gara"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Calcio",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "16:00",
-                "titolo": "Diretta Gol Live"
-            },
-            {
                 "ora": "18:00",
-                "titolo": "Craven Cottage - Una Casa Nello Stadio"
+                "titolo": "Craven Cottage - Una Casa Nello Stadio Live"
             },
             {
                 "ora": "18:30",
@@ -162,7 +158,7 @@
                 "titolo": "Manchester United - Nottingham Forest"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Tennis",
@@ -209,23 +205,15 @@
                 "titolo": "Finale Doppio"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport F1",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "16:05",
-                "titolo": "Miami: Feature Race Live"
-            },
-            {
-                "ora": "17:40",
-                "titolo": "Motori Highlights F1 Academy - Ep. 1 - Motori Highlights F1 Academy 2026 Cina 21/03/2026"
-            },
-            {
                 "ora": "18:05",
-                "titolo": "Motori Formula 2 - Ep. 4 - Motori Formula 2 2026 [F2 Gp Australia F.Race '26] 08/03/2026"
+                "titolo": "Motori Formula 2 - Ep. 4 - Motori Formula 2 2026 [F2 Gp Australia F.Race '26] 08/03/2026 Live"
             },
             {
                 "ora": "19:30",
@@ -262,21 +250,25 @@
             {
                 "ora": "02:00",
                 "titolo": "GP Cina: Gara"
+            },
+            {
+                "ora": "03:00",
+                "titolo": "GP Giappone: Gara"
+            },
+            {
+                "ora": "04:00",
+                "titolo": "GP Miami: Gara Sprint"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport MotoGP",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "17:00",
-                "titolo": "GP Catalogna: Gara Live"
-            },
-            {
                 "ora": "18:00",
-                "titolo": "Catalunya"
+                "titolo": "Catalunya Live"
             },
             {
                 "ora": "19:00",
@@ -317,21 +309,21 @@
             {
                 "ora": "03:15",
                 "titolo": "GP Catalogna: Gara"
+            },
+            {
+                "ora": "03:45",
+                "titolo": "Vado al massimo"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Basket",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "16:15",
-                "titolo": "Olimpia Milano - Reggio Emilia Live"
-            },
-            {
                 "ora": "18:15",
-                "titolo": "NBA Action"
+                "titolo": "NBA Action Live"
             },
             {
                 "ora": "18:40",
@@ -372,9 +364,13 @@
             {
                 "ora": "02:00",
                 "titolo": "Basket Nba - Ep. 139 - Basket Nba 2025/2026 Conference Semifinals G6 If Tbd/ Tbd 17/05/2026 (2:00)"
+            },
+            {
+                "ora": "05:00",
+                "titolo": "NBA Action"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Arena",
@@ -429,19 +425,15 @@
                 "titolo": "Boat Show 2026 Ep.14 14/05/2026"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Max",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "17:05",
-                "titolo": "Icarus Ultra Live"
-            },
-            {
                 "ora": "17:35",
-                "titolo": "Francia - Inghilterra"
+                "titolo": "Francia - Inghilterra Live"
             },
             {
                 "ora": "19:40",
@@ -484,23 +476,15 @@
                 "titolo": "Dakar 2026: I Signori Della Sabbia"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Mix",
         "categoria": "Sport",
         "programmi": [
             {
-                "ora": "17:15",
-                "titolo": "Social Media Rider Live"
-            },
-            {
-                "ora": "17:35",
-                "titolo": "Budoni"
-            },
-            {
                 "ora": "17:50",
-                "titolo": "Italia - Svizzera"
+                "titolo": "Italia - Svizzera Live"
             },
             {
                 "ora": "19:40",
@@ -537,9 +521,17 @@
             {
                 "ora": "02:05",
                 "titolo": "Galles - Italia"
+            },
+            {
+                "ora": "04:00",
+                "titolo": "Havk Mladost - Pro Recco"
+            },
+            {
+                "ora": "05:30",
+                "titolo": "Icarus Ultra"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Sport Golf",
@@ -566,7 +558,7 @@
                 "titolo": "Golf Major Us Pga Championship - Ep. 4 - Golf Major Us Pga Championship 2026 4a Giornata 17/05/2026"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Uno",
@@ -609,7 +601,7 @@
                 "titolo": "Scontro tra titani ( 2010 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Collection",
@@ -644,19 +636,15 @@
                 "titolo": "Il colosso di Rodi ( 1961 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Family",
         "categoria": "Cinema",
         "programmi": [
             {
-                "ora": "15:30",
-                "titolo": "Troppo cattivi 2 ( 2025 ) Live"
-            },
-            {
                 "ora": "17:20",
-                "titolo": "Dragon Trainer ( 2025 )"
+                "titolo": "Dragon Trainer ( 2025 ) Live"
             },
             {
                 "ora": "19:25",
@@ -691,7 +679,7 @@
                 "titolo": "Speciale: Rosa Elettrica ( 0 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Action",
@@ -726,7 +714,7 @@
                 "titolo": "Pacific Rim - La rivolta ( 2018 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Suspense",
@@ -757,7 +745,7 @@
                 "titolo": "Dead Of Winter - Sfida Nel Gelo ( 2025 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Romance",
@@ -792,7 +780,7 @@
                 "titolo": "Always - Per sempre ( 1989 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Drama",
@@ -827,19 +815,15 @@
                 "titolo": "Nata per te ( 2023 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Cinema Comedy",
         "categoria": "Cinema",
         "programmi": [
             {
-                "ora": "15:55",
-                "titolo": "Le ragazze del Pandora's Box ( 2020 ) Live"
-            },
-            {
                 "ora": "17:35",
-                "titolo": "Quo vado? ( 2016 )"
+                "titolo": "Quo vado? ( 2016 ) Live"
             },
             {
                 "ora": "19:05",
@@ -870,23 +854,15 @@
                 "titolo": "Un fidanzato per mia moglie ( 2014 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Uno",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:45",
-                "titolo": "Alessandro Borghese - 4 Ristoranti Live"
-            },
-            {
-                "ora": "17:50",
-                "titolo": "Money Road: I partecipanti"
-            },
-            {
                 "ora": "17:55",
-                "titolo": "Foodish"
+                "titolo": "Foodish Live"
             },
             {
                 "ora": "18:55",
@@ -925,19 +901,15 @@
                 "titolo": "MasterChef USA"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Atlantic",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:25",
-                "titolo": "American Crime Story ( 2018 ) Live"
-            },
-            {
                 "ora": "17:35",
-                "titolo": "Rosa Elettrica - In fuga con il nemico ( 2026 )"
+                "titolo": "Rosa Elettrica - In fuga con il nemico ( 2026 ) Live"
             },
             {
                 "ora": "18:35",
@@ -978,21 +950,21 @@
             {
                 "ora": "04:00",
                 "titolo": "Breaking Bad ( 2011 )"
+            },
+            {
+                "ora": "04:50",
+                "titolo": "Speciale: Rosa Elettrica ( 2026 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Serie",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "17:00",
-                "titolo": "Outlander ( 2026 ) Live"
-            },
-            {
                 "ora": "18:00",
-                "titolo": "Outlander ( 2026 )"
+                "titolo": "Outlander ( 2026 ) Live"
             },
             {
                 "ora": "19:20",
@@ -1033,21 +1005,21 @@
             {
                 "ora": "04:30",
                 "titolo": "A casa tutti bene - La serie ( 2021 )"
+            },
+            {
+                "ora": "05:20",
+                "titolo": "Fire Country ( 2024 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Investigation",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:35",
-                "titolo": "NCIS ( 2003 ) Live"
-            },
-            {
                 "ora": "17:30",
-                "titolo": "Law & Order: I due volti della giustizia ( 2002 )"
+                "titolo": "Law & Order: I due volti della giustizia ( 2002 ) Live"
             },
             {
                 "ora": "18:20",
@@ -1088,25 +1060,21 @@
             {
                 "ora": "03:55",
                 "titolo": "NCIS ( 2003 )"
+            },
+            {
+                "ora": "04:35",
+                "titolo": "NCIS ( 2003 )"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Crime",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:20",
-                "titolo": "Murder Suspect Live"
-            },
-            {
-                "ora": "17:35",
-                "titolo": "Le prigioni oscure"
-            },
-            {
                 "ora": "18:00",
-                "titolo": "Le prigioni oscure"
+                "titolo": "Le prigioni oscure Live"
             },
             {
                 "ora": "18:30",
@@ -1143,21 +1111,25 @@
             {
                 "ora": "01:30",
                 "titolo": "Real Cops"
+            },
+            {
+                "ora": "01:55",
+                "titolo": "Chemsex: la droga dello stupro"
+            },
+            {
+                "ora": "03:25",
+                "titolo": "Fiumicino: Operazione s*x & Clean"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Adventure",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:35",
-                "titolo": "Squali: l'incubo dei surfisti Live"
-            },
-            {
                 "ora": "17:25",
-                "titolo": "Bear Grylls: la legge del piu' forte"
+                "titolo": "Bear Grylls: la legge del piu' forte Live"
             },
             {
                 "ora": "18:20",
@@ -1198,25 +1170,21 @@
             {
                 "ora": "04:10",
                 "titolo": "Balene con Steve Backshall"
+            },
+            {
+                "ora": "05:05",
+                "titolo": "Balene con Steve Backshall"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "MTV",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "16:35",
-                "titolo": "Catfish: False Identita' Live"
-            },
-            {
-                "ora": "17:20",
-                "titolo": "Catfish: False Identita'"
-            },
-            {
                 "ora": "18:05",
-                "titolo": "Caught In The Act"
+                "titolo": "Caught In The Act Live"
             },
             {
                 "ora": "18:50",
@@ -1253,21 +1221,25 @@
             {
                 "ora": "00:45",
                 "titolo": "Ridiculousness: Veri American Idiots"
+            },
+            {
+                "ora": "01:10",
+                "titolo": "Ridiculousness: Veri American Idiots"
+            },
+            {
+                "ora": "01:35",
+                "titolo": "Love and Hip Hop Atlanta"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Comedy Central",
         "categoria": "Intrattenimento",
         "programmi": [
             {
-                "ora": "17:00",
-                "titolo": "Most Ridiculous Live"
-            },
-            {
                 "ora": "17:30",
-                "titolo": "Maurizio Battista Show"
+                "titolo": "Maurizio Battista Show Live"
             },
             {
                 "ora": "18:45",
@@ -1308,21 +1280,21 @@
             {
                 "ora": "23:40",
                 "titolo": "South Park ( 2010 )"
+            },
+            {
+                "ora": "00:05",
+                "titolo": "Stand Up Comedy"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Arte",
         "categoria": "Documentari",
         "programmi": [
             {
-                "ora": "16:10",
-                "titolo": "Donyale Luna: Supermodel Live"
-            },
-            {
                 "ora": "17:45",
-                "titolo": "ArtBox"
+                "titolo": "ArtBox Live"
             },
             {
                 "ora": "18:20",
@@ -1363,21 +1335,21 @@
             {
                 "ora": "01:55",
                 "titolo": "Musica con vista. Festival all'aria..."
+            },
+            {
+                "ora": "02:30",
+                "titolo": "The Beatles: Sgt. Pepper and Beyond"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Documentaries",
         "categoria": "Documentari",
         "programmi": [
             {
-                "ora": "16:55",
-                "titolo": "The City Game Live"
-            },
-            {
                 "ora": "18:05",
-                "titolo": "Parte 1"
+                "titolo": "Parte 1 Live"
             },
             {
                 "ora": "18:50",
@@ -1418,21 +1390,21 @@
             {
                 "ora": "02:40",
                 "titolo": "L'uomo che scherzava col fuoco:..."
+            },
+            {
+                "ora": "03:35",
+                "titolo": "L'uomo che scherzava col fuoco:..."
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky Nature",
         "categoria": "Documentari",
         "programmi": [
             {
-                "ora": "17:05",
-                "titolo": "Earth Live"
-            },
-            {
                 "ora": "18:10",
-                "titolo": "Earth"
+                "titolo": "Earth Live"
             },
             {
                 "ora": "19:10",
@@ -1473,21 +1445,21 @@
             {
                 "ora": "04:20",
                 "titolo": "Australia Selvaggia"
+            },
+            {
+                "ora": "05:10",
+                "titolo": "Cuccioli selvaggi"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Discovery Channel",
         "categoria": "Documentari",
         "programmi": [
             {
-                "ora": "15:50",
-                "titolo": "Deadliest Catch Live"
-            },
-            {
                 "ora": "17:35",
-                "titolo": "Deadliest Catch"
+                "titolo": "Deadliest Catch Live"
             },
             {
                 "ora": "19:25",
@@ -1528,25 +1500,21 @@
             {
                 "ora": "02:10",
                 "titolo": "NASA X-Files"
+            },
+            {
+                "ora": "03:15",
+                "titolo": "NASA X-Files"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "History Channel",
         "categoria": "Documentari",
         "programmi": [
             {
-                "ora": "15:55",
-                "titolo": "La caduta: Cronache della fine del fascismo Live"
-            },
-            {
-                "ora": "17:45",
-                "titolo": "World War II - Io c'ero"
-            },
-            {
                 "ora": "17:55",
-                "titolo": "I misteri dell'universo"
+                "titolo": "I misteri dell'universo Live"
             },
             {
                 "ora": "18:40",
@@ -1583,25 +1551,25 @@
             {
                 "ora": "00:55",
                 "titolo": "Affari al buio"
+            },
+            {
+                "ora": "01:20",
+                "titolo": "Affari Di Famiglia"
+            },
+            {
+                "ora": "02:15",
+                "titolo": "Enigmi alieni"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     },
     {
         "canale": "Sky TG 24",
         "categoria": "News",
         "programmi": [
             {
-                "ora": "17:00",
-                "titolo": "TG24 mezz'ora Live"
-            },
-            {
-                "ora": "17:30",
-                "titolo": "TG24 mezz'ora"
-            },
-            {
                 "ora": "18:00",
-                "titolo": "TG24 mezz'ora"
+                "titolo": "TG24 mezz'ora Live"
             },
             {
                 "ora": "18:25",
@@ -1638,8 +1606,16 @@
             {
                 "ora": "23:00",
                 "titolo": "TG24 mezz'ora"
+            },
+            {
+                "ora": "23:30",
+                "titolo": "TG24 mezz'ora"
+            },
+            {
+                "ora": "23:50",
+                "titolo": "Sky Meteo24"
             }
         ],
-        "aggiornato": "15:19"
+        "aggiornato": "16:16"
     }
 ]
